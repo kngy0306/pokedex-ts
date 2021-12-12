@@ -1,8 +1,21 @@
 import React from 'react';
-import './App.css';
+import { ChakraProvider, Container } from '@chakra-ui/react';
+import { theme } from './theme/Theme';
 
-function App() {
-  return <div className="App">React</div>;
-}
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+
+const App: React.FC = () => {
+  return (
+    <ChakraProvider theme={theme}>
+      <Container maxW="container.md">
+        <Header />
+        <Main />
+        <Footer />
+      </Container>
+    </ChakraProvider>
+  );
+};
 
 export default App;
