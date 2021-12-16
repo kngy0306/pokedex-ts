@@ -1,14 +1,6 @@
 import { Image } from '@chakra-ui/react';
 import React from 'react';
-
-type PokemonData = {
-  id: number;
-  name: string;
-  weight: number;
-  type: string;
-  image: string;
-  animatedImage: string;
-};
+import { PokemonData } from '../types';
 
 const PokemonList: React.FC<{ props: PokemonData[] }> = ({ props }) => {
   return (

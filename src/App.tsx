@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ChakraProvider, Container } from '@chakra-ui/react';
 import { theme } from './theme/Theme';
+import { PokemonData, Type } from './types';
 
 import Header from './components/Header';
 // import Main from './components/Main';
 import Footer from './components/Footer';
-
 import PokemonList from './components/PokemonList';
-
-type PokemonData = {
-  id: number;
-  name: string;
-  weight: number;
-  type: string;
-  image: string;
-  animatedImage: string;
-};
-
-type Type = {
-  slot: number;
-  type: {
-    name: string;
-    url: string;
-  };
-};
 
 const App: React.FC = () => {
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
