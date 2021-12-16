@@ -11,6 +11,18 @@ import PokemonList from './components/PokemonList';
 type PokemonData = {
   id: number;
   name: string;
+  weight: number;
+  type: string;
+  image: string;
+  animatedImage: string;
+};
+
+type Type = {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
 };
 
 const App: React.FC = () => {
@@ -27,6 +39,12 @@ const App: React.FC = () => {
     const pokemon: PokemonData = {
       id: data.id,
       name: data.name,
+      weight: data.weight,
+      type: data.types.map((d: Type) => d.type.name).join(', '),
+      image: data.sprites.other['official-artwork'].front_default,
+      animatedImage:
+        data.sprites.versions['generation-v']['black-white'].animated
+          .front_default,
     };
 
     setPokemons((prevPokemons) => {
