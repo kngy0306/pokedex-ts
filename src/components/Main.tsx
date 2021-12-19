@@ -8,7 +8,8 @@ const Main: React.FC = () => {
 
   const getPokemon = async () => {
     try {
-      for (let id = 387; id <= 392; id++) {
+      // for (let id = 387; id <= 493; id++) {
+      for (let id = 387; id <= 389; id++) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
         if (!response.ok) {
           throw new Error('Found no Pokemon!');
@@ -31,8 +32,8 @@ const Main: React.FC = () => {
           return [...prevPokemons, pokemon];
         });
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -40,9 +41,7 @@ const Main: React.FC = () => {
     getPokemon();
   }, []);
 
-  const content = <PokemonList props={pokemons} />;
-
-  return <>{content}</>;
+  return <PokemonList props={pokemons} />;
 };
 
 export default Main;

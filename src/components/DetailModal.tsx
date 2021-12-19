@@ -11,30 +11,33 @@ import {
 
 import { PokemonData } from '../types';
 
-type ModalPokemonData = PokemonData & {
-  isOpen?: () => void;
-  onOpen?: () => void;
-  onClose?: () => void;
-};
-
-const DetailModal: React.FC<{ props: ModalPokemonData[] }> = ({ props }) => {
+const DetailModal: React.FC<{
+  modalOpen: boolean;
+  modalClose: () => void;
+  pokemon: PokemonData;
+}> = ({ modalOpen, modalClose, pokemon }) => {
   return (
-    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+    <Modal isOpen={modalOpen} onClose={modalClose}>
       <ModalOverlay />
       <ModalContent
         backgroundColor="blackAlpha.600"
         color="#eee"
         borderRadius="full">
         <ModalHeader textAlign="center">
-          <Text fontSize="xxx-large">{props.name}</Text>
+          <Text fontSize="xxx-large">{pokemon.name}</Text>
         </ModalHeader>
         <ModalBody textAlign="center">
-          <Image src={props.animatedImage} alt={props.name} w="30%" m="auto" />
+          <Image
+            src={pokemon.animatedImage}
+            alt={pokemon.name}
+            w="30%"
+            m="auto"
+          />
           <Text fontSize="x-large" pt={10}>
-            index: {props.id}
+            index: {pokemon.id}
           </Text>
-          <Text fontSize="x-large">type: {props.type}</Text>
-          <Text fontSize="x-large">weight: {props.weight}</Text>
+          <Text fontSize="x-large">type: {pokemon.type}</Text>
+          <Text fontSize="x-large">weight: {pokemon.weight}</Text>
         </ModalBody>
       </ModalContent>
     </Modal>
