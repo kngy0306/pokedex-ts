@@ -1,19 +1,16 @@
-import { Image } from '@chakra-ui/react';
 import React from 'react';
+import { Grid } from '@chakra-ui/react';
+
 import { PokemonData } from '../types';
+import Pokemon from './Pokemon';
 
 const PokemonList: React.FC<{ props: PokemonData[] }> = ({ props }) => {
   return (
-    <div>
-      {props.map((p: PokemonData) => {
-        return (
-          <>
-            <h1 key={p.id}>{p.name}</h1>
-            <Image src={p.image} alt={p.name} w="70%" mx="auto" />
-          </>
-        );
+    <Grid templateColumns="repeat(3, 1fr)" gap={5}>
+      {props.map((pokemon: PokemonData) => {
+        return <Pokemon key={pokemon.id} pokemon={pokemon} />;
       })}
-    </div>
+    </Grid>
   );
 };
 

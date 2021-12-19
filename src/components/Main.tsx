@@ -1,28 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-type PokemonData = {
-  id: number;
-  name: string;
-  weight: string;
-  type: string;
-  image: string;
-  animated_image: string;
-};
-
-type Types = {
-  slot: number;
-  type: {
-    name: string;
-    url: string;
-  };
-};
+import PokemonList from './PokemonList';
+import { PokemonData, Type } from '../types';
 
 const Main: React.FC = () => {
-  console.log('main');
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
 
-  const FetchPokemon = async () => {
+  const getPokemon = async () => {
     try {
+      // for (let id = 387; id <= 493; id++) {
       for (let id = 387; id <= 389; id++) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
         if (!response.ok) {
@@ -30,15 +16,14 @@ const Main: React.FC = () => {
         }
 
         const data = await response.json();
-        const type = data.types.map((d: Types) => d.type.name).join(', ');
 
         const pokemon: PokemonData = {
           id: data.id,
           name: data.name,
           weight: data.weight,
-          type: type,
+          type: data.types.map((d: Type) => d.type.name).join(', '),
           image: data.sprites.other['official-artwork'].front_default,
-          animated_image:
+          animatedImage:
             data.sprites.versions['generation-v']['black-white'].animated
               .front_default,
         };
@@ -47,18 +32,16 @@ const Main: React.FC = () => {
           return [...prevPokemons, pokemon];
         });
       }
-
-      console.log(pokemons);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    FetchPokemon();
-  });
+    getPokemon();
+  }, []);
 
-  return <h1>React</h1>;
+  return <PokemonList props={pokemons} />;
 };
 
 export default Main;
