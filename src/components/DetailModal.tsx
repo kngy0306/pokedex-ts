@@ -17,7 +17,7 @@ const DetailModal: React.FC<{
   pokemon: PokemonData;
 }> = ({ modalOpen, modalClose, pokemon }) => {
   return (
-    <Modal isOpen={modalOpen} onClose={modalClose}>
+    <Modal isOpen={modalOpen} onClose={modalClose} size="sm">
       <ModalOverlay />
       <ModalContent
         backgroundColor="blackAlpha.600"
