@@ -22,7 +22,7 @@ const DetailModal: React.FC<{
       <ModalContent
         backgroundColor="blackAlpha.600"
         color="#eee"
-        borderRadius="full">
+        borderRadius="lg">
         <ModalHeader textAlign="center">
           <Text fontSize="xxx-large">{pokemon.name}</Text>
         </ModalHeader>

@@ -22,7 +22,7 @@ const Pokemon: React.FC<{ pokemon: PokemonData }> = ({ pokemon }) => {
         px={3}
         cursor="pointer"
         _hover={{
-          transform: 'scale(1.01)',
+          transform: 'scale(.95)',
           transition: 'all .2s ease-out',
           border: '0px',
         }}>

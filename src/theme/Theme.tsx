@@ -5,7 +5,7 @@ export const theme = extendTheme({
     global: {
       body: {
         fontFamily: 'Caveat',
-        backgroundColor: 'gray.600',
+        backgroundColor: '#606e87',
         color: 'gray.800',
       },
     },
