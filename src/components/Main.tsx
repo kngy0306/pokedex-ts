@@ -8,8 +8,7 @@ const Main: React.FC = () => {
 
   const getPokemon = async () => {
     try {
-      // for (let id = 387; id <= 493; id++) {
-      for (let id = 387; id <= 389; id++) {
+      for (let id = 387; id <= 493; id++) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
         if (!response.ok) {
           throw new Error('Found no Pokemon!');
