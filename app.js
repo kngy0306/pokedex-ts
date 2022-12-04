@@ -9,7 +9,7 @@ const server = protect(
   (username, password) =>
     safeCompare(username, USER_NAME) && safeCompare(password, PASSWORD),
   {
-    directory: 'build',
+    directory: '${__dirname}/build',
     onAuthFailed: (res) => {
       res.end('Authentication failed')
     },
